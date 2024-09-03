@@ -21,11 +21,8 @@
 	})
   </script>
 <div class="bg-gray-100 text-slate-800 p-2 min-h-screen">
-	{#if isValid}
 		<Header isValid={isValid}></Header>			
-	{/if}
 	<main class="min-h-screen p-2">
-
 		<!-- {#if !isValid}
 			{#if $page?.route?.id?.toString()=='/' || $page.url.toString().includes('login')}
 				<slot />
@@ -35,7 +32,6 @@
 		{:else}
 			<slot/>			
 		{/if} -->
-
 		<div>
 			<slot></slot>
 		</div>
