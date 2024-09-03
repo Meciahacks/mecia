@@ -104,6 +104,9 @@
 	</script>
 	<div>
 		<h1 class='bg-slate-800 text-white p-2 text-xl uppercase font-bold'>QR Code Scanner</h1>
+		{#if loading}
+			<h1>Loading....</h1>
+		{/if}
 		{#if mesg}
 			<p class="text-2xl bg-green-700 text-white font-bold text-center p-2">{mesg}</p>
 		{/if}
