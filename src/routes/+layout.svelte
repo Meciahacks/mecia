@@ -1,7 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
 
-	import { page } from '$app/stores';
 	import Header from './Header.svelte';
 	import { onMount } from "svelte";
 	import '../app.css';	
@@ -9,17 +8,17 @@
 	let isValid=false
 	onMount(()=>{
 		authStore.subscribe((store) => {
-
 			if(!store || !store.user) 
 				return;//....
-    		isValid = store.token?true:false			
+
+				isValid = store.token?true:false			
 			if (!store.isLoggedIn) {
 				console.log('****');
 				goto('/login')
 			}		
 		});		
 	})
-  </script>
+</script>
 <div class="bg-gray-100 text-slate-800 p-2 min-h-screen">
 		<Header isValid={isValid}></Header>			
 	<main class="min-h-screen p-2">

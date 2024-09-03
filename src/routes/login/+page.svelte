@@ -1,4 +1,4 @@
-<script>	
+<script>	 
 	import { pb, authStore } from '../../auth.js'
 	
 	import { goto } from '$app/navigation';
