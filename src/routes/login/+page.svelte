@@ -17,12 +17,16 @@
 		};
 		const fetchSlotList=async()=>{
 			try{
+				loading=true
 				slotList=await pb.collection('Slot').getFullList()
 			}
 			catch(error){
 				console.log('****',error);
 				mesg=''
 				error_mesg=error
+			}
+			finally{
+				loading=false
 			}
 		}
 		const fetchRecord=async(decodedText)=>{
@@ -33,7 +37,7 @@
 				});
 				if(record.expand.Slotwise_via_member)
 					console.log(record.expand?.Slotwise_via_member[0]?.slot,selectedSlotText);            
-				if(record.expand.Slotwise_via_member &&  record.expand.Slotwise_via_member[0].slot==selectedSlotText && record.expand.Slotwise_via_member[0].is_present){
+							if(record.expand.Slotwise_via_member &&  record.expand.Slotwise_via_member[0].slot==selectedSlotText && record.expand.Slotwise_via_member[0].is_present){
 					mesg=''
 					error_mesg="Already Present"
 					return
