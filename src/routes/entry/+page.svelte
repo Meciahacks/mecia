@@ -15,7 +15,7 @@
 			fps: 10,	
 			qrbox: {width: 250, height: 250},
 			rememberLastUsedCamera: true,
-			supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA,Html5QrcodeScanType.SCAN_TYPE_FILE]
+			supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
 		};
 		const fetchSlotList=async()=>{
 			try{

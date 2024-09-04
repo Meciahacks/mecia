@@ -13,7 +13,8 @@
 
 			qrbox: {width: 250, height: 250},
 			rememberLastUsedCamera: true,
-			supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA,Html5QrcodeScanType.SCAN_TYPE_FILE]
+
+			supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
 		};
 		const fetchRecord=async(decodedText)=>{
 			try {            

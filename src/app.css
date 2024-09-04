@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400..700&display=swap');
+@font-face {
+
+  font-family: 'synthan';
+  src: url('/Syntha-N.woff'),
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*{
+    font-family:Monda, 'Courier New', Courier, monospace;
+
+
+    font-weight: 700;
+}
+

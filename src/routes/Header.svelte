@@ -52,7 +52,7 @@
 		<div class="flex-1">
 			<a class="btn bg-transparent text-xl text-white font-[synthan] border-none" href='/'><p id='text1'>MECIA2.0 VASAD</p></a>
 		</div>
-		<!-- <div class="dropdown">
+		<div class="dropdown">
 				<div tabindex="0" role="button" class="btn btn-ghost btn-circle">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -69,11 +69,12 @@
 			</div>
 			<ul
 				class="menu menu-sm dropdown-content bg-base-100 rounded-box right-2 z-[1] mt-2 w-52 p-2 shadow">
-				<li class="text-slate-700 text-xl"><a>Homepage</a></li>
-				<li class="text-slate-700 text-xl"><a>Portfolio</a></li>
+				<li class="uppercase hover:underline text-slate-700 text-xl"><a href="/attend">attendance</a></li>
+				<li class="uppercase hover:underline text-slate-700 text-xl"><a href='entry'>slotwise</a></li>
 			</ul>
-			</div>-->
-			<div class="flex-none gap-2">         
+			</div>
+
+			<div class="md:flex hidden gap-2">         
 				<a href="/attend" class="uppercase font-bold btn btn-ghost">attendance</a>
 				<a href="/entry" class="uppercase font-bold btn btn-ghost">slotwise</a>
 		</div> 
