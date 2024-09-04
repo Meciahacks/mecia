@@ -52,7 +52,7 @@
 		<div class="flex-1">
 			<a class="btn bg-transparent text-xl text-white font-[synthan] border-none" href='/'><p id='text1'>MECIA2.0 VASAD</p></a>
 		</div>
-		<div class="dropdown">
+		<div class="dropdown md:hidden flex">
 				<div tabindex="0" role="button" class="btn btn-ghost btn-circle">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

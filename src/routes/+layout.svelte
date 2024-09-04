@@ -21,7 +21,7 @@
 </script>
 <div class="bg-gray-100 text-slate-800 p-2 min-h-screen">
 		<Header isValid={isValid}></Header>			
-	<main class="min-h-screen p-2">
+	<main class="min-h-screen p-2"> 
 		<!-- {#if !isValid}
 			{#if $page?.route?.id?.toString()=='/' || $page.url.toString().includes('login')}
 				<slot />
