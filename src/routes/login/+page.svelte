@@ -45,7 +45,7 @@
 	<p style="color: red;">{error}</p>
   {/if}
 
-  <form on:submit={login} class="container">
+  <form on:submit|preventDefault={()=>{login()}} class="container">
 	<label class="form-control w-full">
 		<div class="label">
 		  <span class="label-text">Email</span>
