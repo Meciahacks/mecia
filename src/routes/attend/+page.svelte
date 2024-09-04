@@ -107,11 +107,12 @@
 			<p class="text-2xl bg-orange-700 text-white font-bold text-center p-2">{error_mesg}</p>
 		{/if}
 		<div class="w-full p-2">
-			<label for="slot1" class="font-bold text-xl">Entry</label>			
-			<input on:change={fetchQR} bind:group={entryexit} type="radio" name="entryexit" value="entry">
+			<label class="font-bold text-xl" for='entrybtn'>Entry</label>			
+			<input on:change={fetchQR} bind:group={entryexit} type="radio" name="entryexit" value="entry" id='entrybtn'>
 
-			<label for="slot1" class="font-bold text-xl">Exit</label>			
-			<input on:change={fetchQR} bind:group={entryexit} type="radio" name="entryexit" value="exit">
+
+			<label for="exitbtn" class="font-bold text-xl">Exit</label>			
+			<input on:change={fetchQR} bind:group={entryexit} type="radio" name="entryexit" value="exit" id="exitbtn">
 		</div>
 		<div id="reader" width="1024"/>        
 		{#if dt}
