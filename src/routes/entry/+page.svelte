@@ -15,7 +15,7 @@
 			fps: 10,	
 			qrbox: {width: 250, height: 250},
 			rememberLastUsedCamera: true,
-			supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+			supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA,Html5QrcodeScanType.SCAN_TYPE_FILE]
 		};
 		const fetchSlotList=async()=>{
 			try{
@@ -63,6 +63,7 @@
 			}
 		}
 		const insertRecord=async()=>{
+			loading=true
 			try {            
 				const rr = {
 					"member": selectedRecordId,
@@ -81,7 +82,18 @@
 				mesg=''
 				console.log('****',error)            
 			}
+			finally{
+				loading=false
+			}
 		}
+		
+		
+		const resetRecord=()=>{
+			selectedRecordId=''
+			selectedSlotText=''
+			dt=''
+			html5QrcodeScanner.clear()          
+		}		
 		const fetchQR=(event) => {
 					selectedRecordId=''
 					dt=null
@@ -152,24 +164,16 @@
 					<div>{dt.name}</div>
 				</div>
 			</div>
-			<div>
-				<button on:click={insertRecord} class="btn btn-primary">Confirm</button>
-				<button>Cancel</button>
+			<div class="m-2 flex justify-center p-2">
+				<button on:click={insertRecord} class="btn btn-primary">
+					
+					{#if loading}<span class="loading loading-spinner"></span>{/if}
+					Confirm
+				</button>				
+				<button on:click={()=>{resetRecord()}} class="bg-orange-700 hover:bg-orange-500 text-white btn">Cancel</button>
 			</div>
 		{:else if loading}
 			<p class="text-center text-xl">Loading....</p>   
 		{/if}
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	</div>	
 	

@@ -13,26 +13,16 @@
 
 			qrbox: {width: 250, height: 250},
 			rememberLastUsedCamera: true,
-
 			supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
 		};
 		const fetchRecord=async(decodedText)=>{
 			try {            
 				loading=true            
-				const record = await pb.collection('team_member').getOne(decodedText, {
-						expand: 'team,Slotwise_via_member',
+				const record = await pb.collection('team_member').getOne(decodedText, {					
+						expand: 'team,Entry_via_member',
 				});
-				// if(record.expand.Slotwise_via_member &&  record.expand.Slotwise_via_member[0].slot==selectedSlotText && record.expand.Slotwise_via_member[0].is_present){
-				// 	mesg=''
-				// 	error_mesg="Already Present"
-				// 	presentFlag=true
-				// 	html5QrcodeScanner.clear() 
-				// 	dt=null
-				// 	return
-				// }
+				console.log('****',record);
 				dt=record
-				// 
-				// insertRecord(dt.id)
 			} catch (error) {            
 				console.log('****',error);
 				dt='User !Found'        
@@ -44,6 +34,7 @@
 			}
 		}
 		const insertRecord=async()=>{
+			loading=true
 			try {            
 				const rr = {
 					"member": selectedRecordId,
@@ -62,6 +53,9 @@
 				error_mesg=error
 				mesg=''
 				console.log('****',error)            
+			}
+			finally{
+				loading=false
 			}
 		}
 		const fetchQR=(event) => {
@@ -91,6 +85,12 @@
 			mesg=''
 			error_mesg=error
 		}
+		const resetRecord=()=>{
+			selectedRecordId=''
+			entryexit=''
+			dt=''
+			html5QrcodeScanner.clear()          
+		}
 		onMount(async()=>{
 			// html5QrcodeScanner = new Html5QrcodeScanner("reader", config,false);
 			// html5QrcodeScanner.render(onScanSuccess, onScanFailure);        
@@ -99,7 +99,7 @@
 	<div>
 		<h1 class='bg-slate-800 text-white p-2 text-xl uppercase font-bold'>QR Code Scanner</h1>
 		{#if loading}
-			<h1>Loading....</h1>
+			<h1 class="text-2xl text-orange-700 text-center p-2">Loading....</h1>
 		{/if}
 		{#if mesg}
 			<p class="text-2xl bg-green-700 text-white font-bold text-center p-2">{mesg}</p>
@@ -127,10 +127,46 @@
 					<div>{dt.name}</div>
 				</div>
 			</div>
-			<div>
-				<button on:click={insertRecord} class="btn btn-primary">Confirm</button>
-				<button>Cancel</button>
+			<div class="m-2 flex justify-center p-2">
+
+
+
+
+
+
+
+
+				
+				<button on:click={insertRecord} class="btn btn-primary">
+					{#if loading}<span class="loading loading-spinner"></span>{/if}
+					Confirm
+				</button>
+				<button on:click={()=>{resetRecord()}} class="bg-orange-700 hover:bg-orange-500 text-white btn">Cancel</button>
 			</div>
+			{#if dt?.expand?.Entry_via_member}
+				<div class="mx-auto my-4 w-10/12 p-2">			
+					<div class="overflow-x-auto">
+						<table class="table">
+							<thead>
+								<tr>								
+									<th></th>
+									<th>Entry/Exit</th>
+									<th>Punch Time</th>
+								</tr>
+							</thead>
+							<tbody>
+								{#each dt?.expand?.Entry_via_member as record,indx}								
+									<tr>
+										<th>{indx+1}</th>
+										<td>{record.entry_exit}</td>
+										<td>{new Date(record.punch_time).toTimeString()}</td>
+									</tr>							
+								{/each}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			{/if}
 		{:else if loading}
 			<p class="text-center text-xl">Loading....</p>   
 		{/if}
