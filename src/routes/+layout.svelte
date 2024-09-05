@@ -23,7 +23,7 @@
 <div class="bg-gray-100 text-slate-800 p-2 min-h-screen">
 		<Header isValid={isValid}></Header>			
 	<main class="min-h-screen p-2"> 
-		<!-- {#if !isValid}
+		{#if !isValid}
 			{#if $page?.route?.id?.toString()=='/' || $page.url.toString().includes('login')}
 				<slot />
 			{:else}
@@ -31,10 +31,10 @@
 			{/if}
 		{:else}
 			<slot/>			
-		{/if} -->
-		<div>
+		{/if}
+		<!-- <div>
 			<slot></slot>
-		</div>
+		</div> -->
 	</main>
 	<footer>
 		<p class="bg-slate-800 text-white uppercase text-center p-2">visit <a class="underline text-xl" href="https://meciahacks2.odoo.com">MECIA2.0 WEBSITE</a></p>
