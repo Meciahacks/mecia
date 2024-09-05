@@ -1,6 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 
+	import {page} from '$app/stores'
 	import Header from './Header.svelte';
 	import { onMount } from "svelte";
 	import '../app.css';	
