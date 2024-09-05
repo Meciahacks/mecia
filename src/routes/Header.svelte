@@ -69,15 +69,31 @@
 			</div>
 			<ul
 				class="menu menu-sm dropdown-content bg-base-100 rounded-box right-2 z-[1] mt-2 w-52 p-2 shadow">
-				<li class="uppercase hover:underline text-slate-700 text-xl"><a href="/attend">attendance</a></li>
-				<li class="uppercase hover:underline text-slate-700 text-xl"><a href='entry'>slotwise</a></li>
+				{#if isValid}
+				<a href="/attend" class="uppercase hover:underline text-slate-700 text-xl">attendance</a>
+				<a href="/entry" class="uppercase hover:underline text-slate-700 text-xl">slotwise</a>
+					<button on:click={logout} class="uppercase hover:underline text-slate-700 text-left text-xl">    
+						LOGOUT
+					</button>
+				{:else}
+					<a class="btn btn-ghost" href="/login">LOGIN</a>
+				{/if}
+				<!-- <li class="uppercase hover:underline text-slate-700 text-xl"><a href="/attend">attendance</a></li>
+				<li class="uppercase hover:underline text-slate-700 text-xl"><a href='entry'>slotwise</a></li> -->
 			</ul>
 			</div>
 
 			<div class="md:flex hidden gap-2">         
+				{#if isValid}
 				<a href="/attend" class="uppercase font-bold btn btn-ghost">attendance</a>
 				<a href="/entry" class="uppercase font-bold btn btn-ghost">slotwise</a>
-		</div> 
+					<button on:click={logout} class="btn btn-ghost">    
+						LOGOUT
+					</button>
+				{:else}
+					<a class="btn btn-ghost" href="/login">LOGIN</a>
+				{/if}
+			</div> 
 	</div>
 	
 
